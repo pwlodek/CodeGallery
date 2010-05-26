@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="CompositeWpfDemo.Module1.Views.Controls.DemoView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:PresentationFramework="clr-namespace:Caliburn.PresentationFramework;assembly=Caliburn.PresentationFramework">
+    <Grid>
+        <Button Content="Module1"
+                PresentationFramework:Message.Attach="[Event Click] = [Action Show]" />
+    </Grid>
+</UserControl>

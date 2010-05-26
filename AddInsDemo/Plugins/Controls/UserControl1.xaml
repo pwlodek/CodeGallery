@@ -1,0 +1,9 @@
+﻿<UserControl x:Class="Plugins.Controls.UserControl1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid>
+        <Border BorderBrush="Red" BorderThickness="2" Background="Green">
+            <Button Click="Button_Click" Width="70" Height="25">Click Me</Button>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Caliburn.Prism</name>
+    </assembly>
+    <members>
+        <member name="T:Caliburn.Prism.CaliburnModuleInitializer">
+            <summary>
+            Custom implementation of the ModuleInitializer used to register the module with the container
+            and load the modules assembly into Caliburn
+            </summary>
+        </member>
+        <member name="M:Caliburn.Prism.CaliburnModuleInitializer.#ctor(Caliburn.Core.IContainer,Microsoft.Practices.Composite.Logging.ILoggerFacade,Caliburn.Core.IAssemblySource)">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Prism.CaliburnModuleInitializer"/> class.
+            </summary>
+            <param name="serviceLocator">The service locator.</param>
+            <param name="loggerFacade">The logger facade.</param>
+            <param name="assemblySource">The assembly source.</param>
+        </member>
+        <member name="M:Caliburn.Prism.CaliburnModuleInitializer.CreateModule(System.String)">
+            <summary>
+            Override the default implemtation in order to register the module with the container and load it's assembly
+            </summary>
+            <param name="typeName"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Caliburn.Prism.CompositeApplicationLibraryModule">
+            <summary>
+            The configuration for the composite application library.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.#ctor(Caliburn.Core.IConfigurationHook,System.Func{System.Windows.DependencyObject})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Prism.CompositeApplicationLibraryModule"/> class.
+            </summary>
+            <param name="hook">The hook.</param>
+            <param name="createShell">The create shell.</param>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.UsingLoggerFacade``1">
+             <summary>
+            Customizes the logger facade.
+             </summary>
+             <typeparam name="T"></typeparam>
+             <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.UsingModuleInitializer``1">
+            <summary>
+            Customizes the module initializer.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.UsingRegionManager``1">
+            <summary>
+            Customizes the region manager.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.UsingEventAggregator``1">
+            <summary>
+            Customizes the event aggregator.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.UsingRegionViewRegistry``1">
+            <summary>
+            Customizes the region view registry.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.UsingRegionBehaviorFactory``1">
+            <summary>
+            Customizes the region behavior factory.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.WithModuleTypes(System.Type[])">
+            <summary>
+            Customizes the module types.
+            </summary>
+            <param name="modules">The modules.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.WithModuleCatalog(Microsoft.Practices.Composite.Modularity.IModuleCatalog)">
+            <summary>
+            Customizes the module catalog.
+            </summary>
+            <param name="moduleCatalog">The module catalog.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.OverrideModuleInitializationWith(System.Action)">
+            <summary>
+            Overrides the module initialization.
+            </summary>
+            <param name="doThisInstead">The action to perform.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.OverrideRegionBehaviorsWith(System.Action{Microsoft.Practices.Composite.Presentation.Regions.IRegionBehaviorFactory})">
+            <summary>
+            Overrides the region behaviors using the provided action.
+            </summary>
+            <param name="doThisInstead">The do this instead.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.AfterConfigureRegionBehaviors(System.Action{Microsoft.Practices.Composite.Presentation.Regions.IRegionBehaviorFactory})">
+            <summary>
+            Executes the action after the region behaviors are configured.
+            </summary>
+            <param name="configureBehaviors">The configure behaviors.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.OverrideRegionAdapterMappingsWith(System.Action{Microsoft.Practices.Composite.Presentation.Regions.RegionAdapterMappings})">
+            <summary>
+            Overrides the region adapter mappings using the provided action.
+            </summary>
+            <param name="doThisInstead">The do this instead.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.AfterConfigureRegionAdapterMappings(System.Action{Microsoft.Practices.Composite.Presentation.Regions.RegionAdapterMappings})">
+            <summary>
+            Executes the action after configuring the region adapter mappings.
+            </summary>
+            <param name="configureRegionAdapterMappings">The configure region adapter mappings.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.GetComponents">
+            <summary>
+            Gets the component information for this module.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.Initialize">
+            <summary>
+            Initializes this module.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Prism.CompositeApplicationLibraryModule.RegisterFrameworkExceptionTypes">
+            <summary>
+            Registers in the <see cref="T:Microsoft.Practices.ServiceLocation.ServiceLocator"/> the <see cref="T:System.Type"/> of the Exceptions
+            that are not considered root exceptions by the <see cref="T:Microsoft.Practices.Composite.ExceptionExtensions"/>.
+            </summary>
+        </member>
+        <member name="T:Caliburn.Prism.ConsoleLogger">
+            <summary>
+            A simple, default implementation of <see cref="T:Microsoft.Practices.Composite.Logging.ILoggerFacade"/>.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Prism.ConsoleLogger.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:Caliburn.Prism.ConsoleLogger"/> class.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Prism.ConsoleLogger.Log(System.String,Microsoft.Practices.Composite.Logging.Category,Microsoft.Practices.Composite.Logging.Priority)">
+            <summary>
+            Write a new log entry with the specified category and priority.
+            </summary>
+            <param name="message">Message body to log.</param>
+            <param name="category">Category of the entry.</param>
+            <param name="priority">The priority of the entry.</param>
+        </member>
+        <member name="M:Caliburn.Prism.ConsoleLogger.Dispose(System.Boolean)">
+            <summary>
+            Disposes the associated <see cref="T:System.IO.TextWriter"/>.
+            </summary>
+            <param name="disposing">When <see langword="true"/>, disposes the associated <see cref="T:System.IO.TextWriter"/>.</param>
+        </member>
+        <member name="M:Caliburn.Prism.ConsoleLogger.Dispose">
+            <summary>
+            Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+            </summary>
+             <remarks>Calls <see cref="M:Caliburn.Prism.ConsoleLogger.Dispose(System.Boolean)"/></remarks>.
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="T:Caliburn.Prism.ExtensionMethods">
+            <summary>
+            Extension methods related to Prism integration.
+            </summary>
+        </member>
+        <member name="M:Caliburn.Prism.ExtensionMethods.WithCompositeApplicationLibrary(Caliburn.Core.IConfigurationHook,System.Func{System.Windows.DependencyObject})">
+            <summary>
+            Adds the composite application library module to the system.
+            </summary>
+            <param name="hook">The hook.</param>
+            <param name="createShell">The create shell.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

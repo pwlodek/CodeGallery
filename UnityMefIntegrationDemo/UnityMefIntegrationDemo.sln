@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnityMefIntegrationDemo", "UnityMefIntegrationDemo\UnityMefIntegrationDemo.csproj", "{9F44EE6D-0FB1-4EE2-ACF8-FD6551CEE8EA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdditionalMefServices", "AdditionalMefServices\AdditionalMefServices.csproj", "{1689126F-DAB5-4602-92CB-EFECF9EB959B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Integration.Mef", "Unity.Integration.Mef\Unity.Integration.Mef.csproj", "{08DA9483-73AD-40CC-A60F-41C8F8E69745}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration Layer", "Integration Layer", "{48E1887D-3CFF-4561-8817-8F39DE176622}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Unity.Integration.Mef.Tests", "Unity.Integration.Mef.Tests\Unity.Integration.Mef.Tests.csproj", "{6391910D-6FED-469A-855A-B9C7CE10E306}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F44EE6D-0FB1-4EE2-ACF8-FD6551CEE8EA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F44EE6D-0FB1-4EE2-ACF8-FD6551CEE8EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F44EE6D-0FB1-4EE2-ACF8-FD6551CEE8EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F44EE6D-0FB1-4EE2-ACF8-FD6551CEE8EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1689126F-DAB5-4602-92CB-EFECF9EB959B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1689126F-DAB5-4602-92CB-EFECF9EB959B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1689126F-DAB5-4602-92CB-EFECF9EB959B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1689126F-DAB5-4602-92CB-EFECF9EB959B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08DA9483-73AD-40CC-A60F-41C8F8E69745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08DA9483-73AD-40CC-A60F-41C8F8E69745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08DA9483-73AD-40CC-A60F-41C8F8E69745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08DA9483-73AD-40CC-A60F-41C8F8E69745}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6391910D-6FED-469A-855A-B9C7CE10E306}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6391910D-6FED-469A-855A-B9C7CE10E306}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6391910D-6FED-469A-855A-B9C7CE10E306}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6391910D-6FED-469A-855A-B9C7CE10E306}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{08DA9483-73AD-40CC-A60F-41C8F8E69745} = {48E1887D-3CFF-4561-8817-8F39DE176622}
+		{6391910D-6FED-469A-855A-B9C7CE10E306} = {48E1887D-3CFF-4561-8817-8F39DE176622}
+	EndGlobalSection
+EndGlobal

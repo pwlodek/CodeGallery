@@ -1,0 +1,71 @@
+﻿<Window x:Class="WpfWizard.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="clr-namespace:WpfWizard.Controls"
+    Title="Window1" Height="500" Width="600">
+
+    <Window.Resources>
+        <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.HeaderPanelBorderResourceKey}">
+            <Setter Property="Background" Value="#F0F0F0" />
+            <Setter Property="BorderBrush" Value="#A0A0A0" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="Padding" Value="5" />
+        </Style>
+
+        <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.SideHeaderPanelBorderResourceKey}">
+            <Setter Property="Background" Value="#F0F0F0" />
+            <Setter Property="BorderBrush" Value="#A0A0A0" />
+            <Setter Property="BorderThickness" Value="0,0,1,0" />
+        </Style>
+
+        <Style TargetType="Border" x:Key="{x:Static Controls:Wizard.ContentPanelBorderResourceKey}">
+            <Setter Property="Background" Value="#F0F0F0" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+
+        <Controls:Wizard x:Name="m_Wizard" CancelClick="Wizard_OnCancelClick" FinishClick="Wizard_OnFinishClick">
+            
+            <!--Hello Page-->
+            <Controls:WizardPage>
+                <Controls:WizardPage.Header>
+                    <StackPanel>
+                        <Label FontSize="18" FontWeight="Bold" Content="Welcome to the Sample Wizard" />
+                        <Label Margin="10,-10,0,0" Content="This wizard will guide You (...)" />
+                    </StackPanel>
+                </Controls:WizardPage.Header>
+
+                <Controls:WizardPage.SideHeader>
+
+                    <StackPanel>
+                        <TextBlock Text="SideBar" />
+                        <CheckBox x:Name="checkbox" Content="Bindable checkbox" />
+                    </StackPanel>
+
+                </Controls:WizardPage.SideHeader>
+
+                <Border Margin="20,50,20,20" VerticalAlignment="Top">
+                    <Label Content="You can use this wizard to conveniently do your work." />
+                </Border>
+            </Controls:WizardPage>
+
+            <Controls:WizardPage CanFinish="True">
+                <Controls:WizardPage.Header>
+                    <StackPanel>
+                        <Label FontSize="18" FontWeight="Bold" Content="Welcome to the Sample Wizard2" />
+                        <Label Margin="10,-10,0,0" Content="lorem ipsum lorem ipsum lorem ipsum lorem ipsum" />
+                    </StackPanel>
+                </Controls:WizardPage.Header>
+
+                <Border Margin="20,50,20,20" VerticalAlignment="Top">
+                    <StackPanel>
+                        <Label Content="lorem ipsum lorem ipsum lorem ipsum lorem ipsum" />
+                        <CheckBox Content="Bound to Bindable checkbox" IsChecked="{Binding IsChecked, ElementName=checkbox}" />
+                        <CheckBox Content="Option" IsChecked="{Binding OptionSelected}" />
+                    </StackPanel>
+                </Border>
+            </Controls:WizardPage>
+
+        </Controls:Wizard>
+    </Grid>
+</Window>
