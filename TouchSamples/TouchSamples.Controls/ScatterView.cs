@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Windows;
 using System.Windows.Controls.Primitives;
+using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
+using TouchSamples.Controls.Adorners;
 
 namespace TouchSamples.Controls
 {
@@ -22,10 +24,24 @@ namespace TouchSamples.Controls
         {
             // Enable touch support
             ManipulationStarting += OnManipulationStarting;
+            ManipulationStarted += OnManipulationStarted;
+            ManipulationCompleted += OnManipulationCompleted;
             ManipulationDelta += OnManipulationDelta;
             ManipulationInertiaStarting += OnInertiaStarting;
 
             Loaded += (s, e) => Reset();
+        }
+
+        private void OnManipulationStarted(object sender, ManipulationStartedEventArgs e)
+        {
+            var item = (UIElement) e.OriginalSource;
+            AddAdorner(item);
+        }
+
+        private void OnManipulationCompleted(object sender, ManipulationCompletedEventArgs e)
+        {
+            var item = (UIElement) e.OriginalSource;
+            RemoveAdorner(item);
         }
 
         private static void SelectedChanged(object sender, RoutedEventArgs e)
@@ -61,6 +77,9 @@ namespace TouchSamples.Controls
 
                 // Apply the changes to the item.
                 scatterViewItem.RenderTransform = new MatrixTransform(matrix);
+
+                // Update adorner
+                UpdateAdorner(scatterViewItem, matrix);
             }
         }
 
@@ -110,6 +129,9 @@ namespace TouchSamples.Controls
                 // Apply the changes to the item.
                 matrixTransform.Matrix = matrix;
 
+                // Update adorner
+                UpdateAdorner(uiElement, matrix);
+
                 var manipulationContainer = (FrameworkElement)e.ManipulationContainer;
                 var containingRect = new Rect(manipulationContainer.RenderSize);
                 var elementBounds = uiElement.RenderTransform.TransformBounds(new Rect(uiElement.RenderSize));
@@ -156,6 +178,48 @@ namespace TouchSamples.Controls
             };
 
             e.Handled = true;               
+        }
+
+        #endregion
+
+        #region Adorners
+
+        private void UpdateAdorner(UIElement element, Matrix matrix)
+        {
+            var adornerLayer = AdornerLayer.GetAdornerLayer(element);
+            if (adornerLayer != null)
+            {
+                var adorners = adornerLayer.GetAdorners(element);
+                if (adorners != null && adorners.Length > 0)
+                {
+                    adorners[0].RenderTransform = new MatrixTransform(matrix);
+                }
+            }
+        }
+
+        private void RemoveAdorner(UIElement element)
+        {
+            var adornerLayer = AdornerLayer.GetAdornerLayer(element);
+            if (adornerLayer != null)
+            {
+                var adorners = adornerLayer.GetAdorners(element);
+                if (adorners != null && adorners.Length > 0)
+                {
+                    adorners[0].Visibility = Visibility.Collapsed;
+                    adornerLayer.Remove(adorners[0]);
+                }
+            }
+        }
+
+        private void AddAdorner(UIElement element)
+        {
+            var adornerLayer = AdornerLayer.GetAdornerLayer(element);
+            if (adornerLayer != null)
+            {
+                var adorner = new SizeAdorner(element);
+                adornerLayer.Add(adorner);
+                adorner.Visibility = Visibility.Visible;
+            }
         }
 
         #endregion
