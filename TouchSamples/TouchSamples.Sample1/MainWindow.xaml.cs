@@ -38,12 +38,13 @@ namespace TouchSamples.Sample1
         private void OnTouchDown(object sender, TouchEventArgs e)
         {
             var touchPoint = e.GetTouchPoint(m_Canvas);
-            var shape = GetShape(touchPoint.Position.X, touchPoint.Position.Y, new Size(100, 100));
+            var size = (touchPoint.Size.IsEmpty || touchPoint.Size.Height == 0.0 || touchPoint.Size.Width == 0.0)
+                           ? new Size(100, 100)
+                           : touchPoint.Size;
+            var shape = GetShape(touchPoint.Position.X, touchPoint.Position.Y, size);
             
-            m_Canvas.Children.Add(shape);
-            m_Canvas.InvalidateVisual();
-
             m_Shapes.Add(touchPoint.TouchDevice.Id, shape);
+            m_Canvas.Children.Add(shape);
 
             e.Handled = true;
         }

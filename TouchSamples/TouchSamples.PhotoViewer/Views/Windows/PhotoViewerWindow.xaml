@@ -34,7 +34,7 @@
 
     <Grid>
         
-        <Controls:ScatterView x:Name="m_ScatterView" ItemsSource="{Binding Pictures}" />
+        <Controls:ScatterView x:Name="m_ScatterView" ItemsSource="{Binding Pictures}" SelectedItem="{Binding SelectedPicture}" />
 
         <StackPanel>
             <StackPanel Orientation="Horizontal">

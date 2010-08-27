@@ -23,37 +23,35 @@ namespace TouchSamples.Sample2
 
         private void OnManipulationDelta(object sender, ManipulationDeltaEventArgs e)
         {
-
             // Get the UI element and its RenderTransform matrix.
             var uiElement = e.OriginalSource as UIElement;
-            
             if (uiElement != null)
             {
-                var rectsMatrix = ((MatrixTransform)uiElement.RenderTransform).Matrix;
+                var matrixTransform = (MatrixTransform) uiElement.RenderTransform;
+                var matrix = matrixTransform.Matrix;
 
                 // Rotate the Rectangle.
-                rectsMatrix.RotateAt(e.DeltaManipulation.Rotation,
-                                     e.ManipulationOrigin.X,
-                                     e.ManipulationOrigin.Y);
+                matrix.RotateAt(e.DeltaManipulation.Rotation,
+                                e.ManipulationOrigin.X,
+                                e.ManipulationOrigin.Y);
 
                 // Resize the Rectangle.  Keep it square 
                 // so use only the X value of Scale.
-                rectsMatrix.ScaleAt(e.DeltaManipulation.Scale.X,
-                                    e.DeltaManipulation.Scale.X,
-                                    e.ManipulationOrigin.X,
-                                    e.ManipulationOrigin.Y);
+                matrix.ScaleAt(e.DeltaManipulation.Scale.X,
+                               e.DeltaManipulation.Scale.X,
+                               e.ManipulationOrigin.X,
+                               e.ManipulationOrigin.Y);
 
                 // Move the Rectangle.
-                rectsMatrix.Translate(e.DeltaManipulation.Translation.X,
-                                      e.DeltaManipulation.Translation.Y);
+                matrix.Translate(e.DeltaManipulation.Translation.X,
+                                 e.DeltaManipulation.Translation.Y);
 
                 // Apply the changes to the UI element.
-                uiElement.RenderTransform = new MatrixTransform(rectsMatrix);
+                matrixTransform.Matrix = matrix;
 
-                var containingRect = new Rect(((FrameworkElement)e.ManipulationContainer).RenderSize);
-
-                var shapeBounds = uiElement.RenderTransform.TransformBounds(
-                        new Rect(uiElement.RenderSize));
+                var manipulationContainer = (FrameworkElement) e.ManipulationContainer;
+                var containingRect = new Rect(manipulationContainer.RenderSize);
+                var shapeBounds = uiElement.RenderTransform.TransformBounds(new Rect(uiElement.RenderSize));
 
                 // Check if the rectangle is completely in the window.
                 // If it is not and intertia is occuring, stop the manipulation.
@@ -68,12 +66,6 @@ namespace TouchSamples.Sample2
 
         private void OnInertiaStarting(object sender, ManipulationInertiaStartingEventArgs e)
         {
-
-            // Decrease the velocity of the Rectangle's movement by 
-            // 10 inches per second every second.
-            // (10 inches * 96 pixels per inch / 1000ms^2)
-            e.TranslationBehavior.DesiredDeceleration = 10.0 * 96.0 / (1000.0 * 1000.0);
-
             // Decrease the velocity of the Rectangle's resizing by 
             // 0.1 inches per second every second.
             // (0.1 inches * 96 pixels per inch / (1000ms^2)
@@ -83,6 +75,11 @@ namespace TouchSamples.Sample2
             // 2 rotations per second every second.
             // (2 * 360 degrees / (1000ms^2)
             e.RotationBehavior.DesiredDeceleration = 720 / (1000.0 * 1000.0);
+
+            // Decrease the velocity of the Rectangle's movement by 
+            // 10 inches per second every second.
+            // (10 inches * 96 pixels per inch / 1000ms^2)
+            e.TranslationBehavior.DesiredDeceleration = 10.0 * 96.0 / (1000.0 * 1000.0);
 
             e.Handled = true;
         }

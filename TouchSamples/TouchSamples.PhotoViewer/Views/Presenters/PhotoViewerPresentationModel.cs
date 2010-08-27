@@ -16,6 +16,8 @@ namespace TouchSamples.PhotoViewer.Views.Presenters
 
         private readonly IPhotoViewerView m_View;
 
+        private Picture m_SelectedPicture;
+
         [ImportingConstructor]
         public PhotoViewerPresentationModel(IPhotoViewerView view)
         {
@@ -24,6 +26,12 @@ namespace TouchSamples.PhotoViewer.Views.Presenters
 
             m_View = view;
             m_View.PresentationModel = this;
+        }
+        
+        public Picture SelectedPicture
+        {
+            get { return m_SelectedPicture; }
+            set { m_SelectedPicture = value; }
         }
 
         public void Run()

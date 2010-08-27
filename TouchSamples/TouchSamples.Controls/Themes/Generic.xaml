@@ -37,18 +37,25 @@
 
                         <ContentPresenter />
                         
-                    </Border>
+                    </Border>            
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
         
         <Setter Property="IsManipulationEnabled" Value="True" />
+        <Setter Property="Panel.ZIndex" Value="1" />
         
         <Setter Property="RenderTransform">
             <Setter.Value>
                 <MatrixTransform />
             </Setter.Value>
         </Setter>
+        
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Panel.ZIndex" Value="2" />
+            </Trigger>
+        </Style.Triggers>
     </Style>
 
 </ResourceDictionary>
