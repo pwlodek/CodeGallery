@@ -13,6 +13,17 @@ namespace TouchSamples.Controls
             DefaultStyleKeyProperty.OverrideMetadata(typeof(ScatterViewItem),
                 new FrameworkPropertyMetadata(typeof(ScatterViewItem)));
         }
+        
+        public int ZIndex
+        {
+            get { return (int)GetValue(ZIndexProperty); }
+            internal set { SetValue(ZIndexPropertyKey, value); }
+        }
+
+        internal static readonly DependencyPropertyKey ZIndexPropertyKey =
+            DependencyProperty.RegisterReadOnly("ZIndex", typeof(int), typeof(ScatterViewItem), new UIPropertyMetadata(1));
+
+        public static readonly DependencyProperty ZIndexProperty = ZIndexPropertyKey.DependencyProperty;
 
         public static readonly DependencyProperty IsSelectedProperty =
             Selector.IsSelectedProperty.AddOwner(typeof (ScatterViewItem),

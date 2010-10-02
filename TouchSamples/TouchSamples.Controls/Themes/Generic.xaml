@@ -44,19 +44,13 @@
         </Setter>
         
         <Setter Property="IsManipulationEnabled" Value="True" />
-        <Setter Property="Panel.ZIndex" Value="1" />
+        <Setter Property="Panel.ZIndex" Value="{Binding RelativeSource={RelativeSource Self}, Path=ZIndex}" />
         
         <Setter Property="RenderTransform">
             <Setter.Value>
                 <MatrixTransform />
             </Setter.Value>
         </Setter>
-        
-        <Style.Triggers>
-            <Trigger Property="IsSelected" Value="True">
-                <Setter Property="Panel.ZIndex" Value="2" />
-            </Trigger>
-        </Style.Triggers>
     </Style>
 
     <Style TargetType="{x:Type Adorners:SizeChrome}">

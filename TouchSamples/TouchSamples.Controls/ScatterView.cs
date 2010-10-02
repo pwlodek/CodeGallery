@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
@@ -47,24 +49,47 @@ namespace TouchSamples.Controls
         private static void SelectedChanged(object sender, RoutedEventArgs e)
         {
             var scatterView = (ScatterView) sender;
-            foreach (var item in scatterView.Items)
-            {
-                var scatterViewItem = (ScatterViewItem) scatterView.ItemContainerGenerator.ContainerFromItem(item);
+            var currentItem = (ScatterViewItem) e.OriginalSource;
+            var items = (from object item in scatterView.Items
+                         select (ScatterViewItem) scatterView.ItemContainerGenerator.ContainerFromItem(item)).ToList();
+            
+            UpdateIsSelectedProperty(items, currentItem);
+            UpdateZIndexProperty(items, currentItem);
+        }
 
-                if (scatterViewItem != e.OriginalSource)
+        private static void UpdateIsSelectedProperty(IEnumerable<ScatterViewItem> items, ScatterViewItem current)
+        {
+            foreach (var item in items)
+            {
+                if (item != current)
                 {
-                    scatterViewItem.IsSelected = false;
+                    item.IsSelected = false;
                 }
             }
         }
 
+        private static void UpdateZIndexProperty(IEnumerable<ScatterViewItem> items, ScatterViewItem current)
+        {
+            var allButCurrent = items.Where(t => t != current).OrderBy(t => t.ZIndex).ToList();
+            for (int i = 0; i < allButCurrent.Count; i++)
+            {
+                allButCurrent[i].ZIndex = i + 1;
+            }
+            current.ZIndex = allButCurrent.Count + 1;
+        }
+
         public void Reset()
         {
+            var zIndex = 1;
+
             // Scatter the items around
             foreach (var item in Items)
             {
                 var scatterViewItem = (ScatterViewItem) ItemContainerGenerator.ContainerFromItem(item);
                 var matrix = new Matrix();
+
+                // Apply proper z index
+                scatterViewItem.ZIndex = zIndex++;
 
                 // Rotate the item.
                 matrix.RotateAt(Randomizer.NextDouble() * 180, scatterViewItem.RenderSize.Width / 2, scatterViewItem.RenderSize.Height / 2);
