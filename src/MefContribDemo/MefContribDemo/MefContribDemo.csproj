@@ -34,15 +34,24 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\..\dependencies\Castle\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="MefContrib">
+      <HintPath>..\..\..\dependencies\MefContrib\MefContrib.dll</HintPath>
+    </Reference>
+    <Reference Include="MefContrib.Hosting.Interception">
+      <HintPath>..\..\..\dependencies\MefContrib\MefContrib.Hosting.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="MefContrib.Hosting.Interception.Castle">
+      <HintPath>..\..\..\dependencies\MefContrib\MefContrib.Hosting.Interception.Castle.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FactoryDemo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
