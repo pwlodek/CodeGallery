@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositeWpfDemo.Shell", "CompositeWpfDemo.Shell\CompositeWpfDemo.Shell.csproj", "{AAA50B56-7DFC-4BB1-92C1-8C60EEE8B399}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositeWpfDemo.Module1", "CompositeWpfDemo.Module1\CompositeWpfDemo.Module1.csproj", "{6CB8D12E-AED1-4050-BB35-59027192B7AF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompositeWpfDemo.Infrastructure", "CompositeWpfDemo.Infrastructure\CompositeWpfDemo.Infrastructure.csproj", "{E72357E3-6C6E-4924-83AC-3D8BCCDA3EBF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AAA50B56-7DFC-4BB1-92C1-8C60EEE8B399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAA50B56-7DFC-4BB1-92C1-8C60EEE8B399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAA50B56-7DFC-4BB1-92C1-8C60EEE8B399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAA50B56-7DFC-4BB1-92C1-8C60EEE8B399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB8D12E-AED1-4050-BB35-59027192B7AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB8D12E-AED1-4050-BB35-59027192B7AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB8D12E-AED1-4050-BB35-59027192B7AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB8D12E-AED1-4050-BB35-59027192B7AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E72357E3-6C6E-4924-83AC-3D8BCCDA3EBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E72357E3-6C6E-4924-83AC-3D8BCCDA3EBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E72357E3-6C6E-4924-83AC-3D8BCCDA3EBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E72357E3-6C6E-4924-83AC-3D8BCCDA3EBF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfWizard", "WpfWizard\WpfWizard.csproj", "{D82B34EE-9CAF-43E7-954C-BEB08092B72F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfWizard2", "WpfWizard2\WpfWizard2.csproj", "{C530E316-F93B-4025-878B-89F95E27DBB4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfWizard3", "WpfWizard3\WpfWizard3.csproj", "{26B16317-DD34-46DD-A305-A42D0E44928C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D82B34EE-9CAF-43E7-954C-BEB08092B72F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D82B34EE-9CAF-43E7-954C-BEB08092B72F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D82B34EE-9CAF-43E7-954C-BEB08092B72F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D82B34EE-9CAF-43E7-954C-BEB08092B72F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C530E316-F93B-4025-878B-89F95E27DBB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C530E316-F93B-4025-878B-89F95E27DBB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C530E316-F93B-4025-878B-89F95E27DBB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C530E316-F93B-4025-878B-89F95E27DBB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26B16317-DD34-46DD-A305-A42D0E44928C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26B16317-DD34-46DD-A305-A42D0E44928C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26B16317-DD34-46DD-A305-A42D0E44928C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26B16317-DD34-46DD-A305-A42D0E44928C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
