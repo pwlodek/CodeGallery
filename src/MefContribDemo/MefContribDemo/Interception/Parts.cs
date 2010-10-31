@@ -3,6 +3,8 @@ using System.ComponentModel.Composition;
 
 namespace MefContribDemo.Interception
 {
+    #region Bar
+
     public interface IBar : IStartable
     {
         void Foo();
@@ -16,8 +18,11 @@ namespace MefContribDemo.Interception
             Console.WriteLine("Bar()");
         }
 
+        public bool IsStarted { get; private set; }
+
         public void Start()
         {
+            IsStarted = true;
             Console.WriteLine("Bar.Start()");
         }
 
@@ -26,6 +31,10 @@ namespace MefContribDemo.Interception
             Console.WriteLine("Bar.Foo()");
         }
     }
+
+    #endregion
+    
+    #region Foo
 
     public interface IFoo : IStartable
     {
@@ -40,6 +49,9 @@ namespace MefContribDemo.Interception
         {
             Console.WriteLine("Foo()");
         }
+        
+        public bool IsStarted { get; private set; }
+
         public void Bar()
         {
             Console.WriteLine("Foo.Bar()");
@@ -47,7 +59,10 @@ namespace MefContribDemo.Interception
 
         public void Start()
         {
+            IsStarted = true;
             Console.WriteLine("Foo.Start()");
         }
     }
+
+    #endregion
 }

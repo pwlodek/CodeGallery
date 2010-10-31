@@ -8,7 +8,7 @@ namespace MefContribDemo.Interception
         public object Intercept(object value)
         {
             var startable = value as IStartable;
-            if (startable != null)
+            if (startable != null && !startable.IsStarted)
             {
                 startable.Start();
             }

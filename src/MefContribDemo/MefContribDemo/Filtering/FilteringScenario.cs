@@ -15,6 +15,7 @@ namespace MefContribDemo.Filtering
         {
             Console.WriteLine("*** Filtering Scenario ***");
 
+            // Simulate the web app life cycle
             using (var webApp = new WebApplication())
             {
                 using (var request = new Request(webApp.Catalog, webApp.Container))
@@ -40,9 +41,14 @@ namespace MefContribDemo.Filtering
         {
             Console.WriteLine("/* Request */");
 
+            // Create interception configuration with appropriate parts filtering handler
             var cfg = new InterceptionConfiguration()
                 .AddHandler(new NonSharedPartsFilter());
+
+            // Create the InterceptingCatalog with above configuration
             var interceptingCatalog = new InterceptingCatalog(parentCatalog, cfg);
+
+            // Create the child container
             this.requestContainer = new CompositionContainer(interceptingCatalog, parentContainer);
         }
 
@@ -71,11 +77,16 @@ namespace MefContribDemo.Filtering
         {
             Console.WriteLine("/* AnotherRequest */");
 
+            // Create interception configuration with appropriate parts filtering handler
             var cfg = new InterceptionConfiguration()
                 .AddHandler(new NonSharedPartsFilter());
+
+            // Create the InterceptingCatalog with above configuration
             var interceptingCatalog = new InterceptingCatalog(parentCatalog, cfg);
             var typeCatalog = new TypeCatalog(typeof(RequestSpecificPart));
             var aggregateCatalog = new AggregateCatalog(interceptingCatalog, typeCatalog);
+
+            // Create the child container
             this.requestContainer = new CompositionContainer(aggregateCatalog, parentContainer);
         }
 

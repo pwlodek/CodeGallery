@@ -17,13 +17,20 @@ namespace MefContribDemo.Generics
             Console.WriteLine("\n*** Generics Scenario ***");
 
             var catalog = new TypeCatalog(typeof(Trampoline), typeof(RepositoryOfTExport));
+            
+            // Create the interception configuration and add support for open generics
             var cfg = new InterceptionConfiguration()
                 .AddHandler(new GenericExportHandler());
+
+            // Create the InterceptingCatalog and pass the configuration
             var interceptingCatalog = new InterceptingCatalog(catalog, cfg);
+
+            // Create the container
             var container = new CompositionContainer(interceptingCatalog);
 
             container.SatisfyImportsOnce(this);
 
+            // Test the open generics support
             Test.Repository.Save(new Customer());
         }
 
