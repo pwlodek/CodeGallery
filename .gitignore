@@ -4,7 +4,6 @@ syntax: glob
 # Ignore Visual Studio files
 *.[Cc]ache
 *.obj
-*.exe
 *.pdb
 *.user
 *.aps
