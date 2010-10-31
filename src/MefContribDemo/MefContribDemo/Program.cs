@@ -1,4 +1,7 @@
 ﻿using System;
+using MefContribDemo.Filtering;
+using MefContribDemo.Generics;
+using MefContribDemo.Interception;
 
 namespace MefContribDemo
 {
@@ -6,9 +9,9 @@ namespace MefContribDemo
     {
         public static void Main(string[] args)
         {
-            new FactoryDemo().Run();
-            new GenericsDemo().Run();
-            new InterceptionDemo().Run();
+            new FilteringScenario().Run();
+            new GenericsScenario().Run();
+            new InterceptionScenario().Run();
         }
     }
 }

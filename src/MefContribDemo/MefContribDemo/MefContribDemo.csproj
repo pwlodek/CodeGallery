@@ -51,9 +51,17 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FactoryDemo.cs" />
-    <Compile Include="GenericsDemo.cs" />
-    <Compile Include="InterceptionDemo.cs" />
+    <Compile Include="Filtering\FilteringScenario.cs" />
+    <Compile Include="Filtering\NonSharedPartsFilter.cs" />
+    <Compile Include="Filtering\Parts.cs" />
+    <Compile Include="Generics\GenericsScenario.cs" />
+    <Compile Include="Generics\Parts.cs" />
+    <Compile Include="Interception\InterceptionScenario.cs" />
+    <Compile Include="Interception\IStartable.cs" />
+    <Compile Include="Interception\LoggingInterceptor.cs" />
+    <Compile Include="Interception\LogInterceptionCriteria.cs" />
+    <Compile Include="Interception\Parts.cs" />
+    <Compile Include="Interception\StartableStrategy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
