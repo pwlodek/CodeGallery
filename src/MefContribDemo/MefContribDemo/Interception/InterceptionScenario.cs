@@ -32,6 +32,9 @@ namespace MefContribDemo.Interception
                 // which want to be logged, does exactly the same as the above code
                 .AddInterceptionCriteria(
                     new PredicateInterceptionCriteria(
+
+                        // Apply the interceptor only to parts which contain
+                        // Log export metadata which equals to true
                         new DynamicProxyInterceptor(new LoggingInterceptor()), def =>
                             def.ExportDefinitions.First().Metadata.ContainsKey("Log") &&
                             def.ExportDefinitions.First().Metadata["Log"].Equals(true)));
