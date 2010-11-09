@@ -5,13 +5,13 @@ namespace MefContribDemo.Interception
 {
     #region Bar
 
-    public interface IBar : IStartable
+    public interface IBar
     {
         void Foo();
     }
 
     [Export(typeof(IBar))]
-    public class Bar : IBar
+    public class Bar : IBar, IStartable
     {
         public Bar()
         {
@@ -36,14 +36,14 @@ namespace MefContribDemo.Interception
     
     #region Foo
 
-    public interface IFoo : IStartable
+    public interface IFoo
     {
         void Bar();
     }
 
     [Export(typeof(IFoo))]
     [ExportMetadata("Log", true)]
-    public class Foo : IFoo
+    public class Foo : IFoo, IStartable
     {
         public Foo()
         {

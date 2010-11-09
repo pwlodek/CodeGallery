@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using MefContrib.Hosting.Interception;
@@ -41,9 +42,9 @@ namespace MefContribDemo.Filtering
         {
             Console.WriteLine("/* Request */");
 
-            // Create interception configuration with appropriate parts filtering handler
+            // Create interception configuration with non-shared parts filter
             var cfg = new InterceptionConfiguration()
-                .AddHandler(new NonSharedPartsFilter());
+                .AddHandler(new PartCreationPolicyFilter(CreationPolicy.NonShared));
 
             // Create the InterceptingCatalog with above configuration
             var interceptingCatalog = new InterceptingCatalog(parentCatalog, cfg);
@@ -77,9 +78,9 @@ namespace MefContribDemo.Filtering
         {
             Console.WriteLine("/* AnotherRequest */");
 
-            // Create interception configuration with appropriate parts filtering handler
+            // Create interception configuration with non-shared parts filter
             var cfg = new InterceptionConfiguration()
-                .AddHandler(new NonSharedPartsFilter());
+                .AddHandler(new PartCreationPolicyFilter(CreationPolicy.NonShared));
 
             // Create the InterceptingCatalog with above configuration
             var interceptingCatalog = new InterceptingCatalog(parentCatalog, cfg);
