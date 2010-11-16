@@ -40,10 +40,8 @@
     <Reference Include="MefContrib">
       <HintPath>..\..\..\dependencies\MefContrib\MefContrib.dll</HintPath>
     </Reference>
-    <Reference Include="MefContrib.Hosting.Interception">
-      <HintPath>..\..\..\dependencies\MefContrib\MefContrib.Hosting.Interception.dll</HintPath>
-    </Reference>
-    <Reference Include="MefContrib.Hosting.Interception.Castle">
+    <Reference Include="MefContrib.Hosting.Interception.Castle, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\dependencies\MefContrib\MefContrib.Hosting.Interception.Castle.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -51,9 +49,9 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filtering\FilteringScenario.cs" />
-    <Compile Include="Filtering\PartCreationPolicyFilter.cs" />
-    <Compile Include="Filtering\Parts.cs" />
+    <Compile Include="Filter\FilteringScenario.cs" />
+    <Compile Include="Filter\PartCreationPolicyFilter.cs" />
+    <Compile Include="Filter\Parts.cs" />
     <Compile Include="Generics\GenericsScenario.cs" />
     <Compile Include="Generics\Parts.cs" />
     <Compile Include="Interception\InterceptionScenario.cs" />

@@ -1,12 +1,16 @@
 using System;
 using System.ComponentModel.Composition;
-using MefContrib.Hosting.Interception.Handlers;
+using MefContrib.Hosting.Generics;
 
 namespace MefContribDemo.Generics
 {
-    public class RepositoryOfTExport : GenericContractTypeMapping
+    [Export(typeof(IGenericContractRegistry))]
+    public class MyGenericContractRegistry : GenericContractRegistryBase
     {
-        public RepositoryOfTExport() : base(typeof(IRepository<>), typeof(Repository<>)) { }
+        protected override void Initialize()
+        {
+            Register(typeof(IRepository<>), typeof(Repository<>));
+        }
     }
 
     [InheritedExport]
@@ -17,6 +21,11 @@ namespace MefContribDemo.Generics
         void Save(T instance);
     }
 
+    /// <summary>
+    /// To make <see cref="Repository{T}"/> type MEF discoverable, it has to be exported
+    /// using the <see cref="InheritedExportAttribute"/> attribute!!!
+    /// </summary>
+    [InheritedExport]
     public class Repository<T> : IRepository<T> where T : new()
     {
         public T Get(int id)

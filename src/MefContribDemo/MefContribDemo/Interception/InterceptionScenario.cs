@@ -13,6 +13,7 @@ namespace MefContribDemo.Interception
         {
             Console.WriteLine("\n*** Interception Scenario ***");
 
+            // Create source catalog
             var catalog = new TypeCatalog(typeof(Bar), typeof(Foo));
 
             // Create interception configuration

@@ -1,5 +1,5 @@
 ﻿using System;
-using MefContribDemo.Filtering;
+using MefContribDemo.Filter;
 using MefContribDemo.Generics;
 using MefContribDemo.Interception;
 
