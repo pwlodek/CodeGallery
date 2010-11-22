@@ -7,11 +7,11 @@ using MefContrib.Hosting.Interception.Configuration;
 
 namespace MefContribDemo.Interception
 {
-    public class InterceptionScenario
+    public class InterceptionDemo
     {
         public void Run()
         {
-            Console.WriteLine("\n*** Interception Scenario ***");
+            Console.WriteLine("\n*** Interception Demo ***");
 
             // Create source catalog
             var catalog = new TypeCatalog(typeof(Bar), typeof(Foo));
@@ -21,7 +21,7 @@ namespace MefContribDemo.Interception
 
                 // Add catalog wide startable interceptor
                 .AddInterceptor(new StartableStrategy())
-                
+
                 /*
                 .AddInterceptionCriteria(
                     new LogInterceptionCriteria(
@@ -46,9 +46,11 @@ namespace MefContribDemo.Interception
             // Create the container
             var container = new CompositionContainer(interceptingCatalog);
 
+            // Bar part will be intercepted only by the startable strategy
             var barPart = container.GetExportedValue<IBar>();
             barPart.Foo();
 
+            // Foo part will be intercepted by both startable and logging strategies
             var fooPart = container.GetExportedValue<IFoo>();
             fooPart.Bar();
         }

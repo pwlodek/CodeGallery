@@ -48,25 +48,28 @@ namespace MefContribDemo.Filter
         }
     }
 
-    public interface IRequestSpecificPart { }
+    public interface ISharedPartPerRequest { }
 
-    [Export(typeof(IRequestSpecificPart))]
-    [PartCreationPolicy(CreationPolicy.NonShared)]
-    public class RequestSpecificPart : IRequestSpecificPart, IDisposable
+    /// <summary>
+    /// This part is used to show how to build custom per-XYZ behavior.
+    /// Here the part demonstrates per-request bahavior.
+    /// </summary>
+    [Export(typeof(ISharedPartPerRequest))]
+    [PartCreationPolicy(CreationPolicy.Shared)]
+    [PartMetadata("PerRequest", true)]
+    public class SharedPartPerRequest : ISharedPartPerRequest, IDisposable
     {
-        [Import]
-        public INonSharedPart Part { get; set; }
-
-        public RequestSpecificPart()
+        public SharedPartPerRequest()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("RequestSpecificPart()");
+            Console.WriteLine("SharedPartPerRequest()");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
+
         public void Dispose()
         {
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("RequestSpecificPart.Dispose()");
+            Console.WriteLine("SharedPartPerRequest.Dispose()");
             Console.ForegroundColor = ConsoleColor.Gray;
         }
     }

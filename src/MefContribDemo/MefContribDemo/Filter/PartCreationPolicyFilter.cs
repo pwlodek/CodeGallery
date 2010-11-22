@@ -4,12 +4,11 @@ using System.ComponentModel.Composition;
 using System.ComponentModel.Composition.Hosting;
 using System.ComponentModel.Composition.Primitives;
 using System.Linq;
-using MefContrib.Hosting.Filter;
 using MefContrib.Hosting.Interception;
 
 namespace MefContribDemo.Filter
 {
-    public class PartCreationPolicyFilter : IExportHandler, IFilter
+    public class PartCreationPolicyFilter : IExportHandler
     {
         private const string MetadataName = CompositionConstants.PartCreationPolicyMetadataName;
 
@@ -33,7 +32,7 @@ namespace MefContribDemo.Filter
                    select export;
         }
 
-        public bool Filter(ComposablePartDefinition part)
+        private bool Filter(ComposablePartDefinition part)
         {
             return part.Metadata.ContainsKey(MetadataName) &&
                    part.Metadata[MetadataName].Equals(this.CreationPolicy);

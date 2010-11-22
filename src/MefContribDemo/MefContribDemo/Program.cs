@@ -9,9 +9,11 @@ namespace MefContribDemo
     {
         public static void Main(string[] args)
         {
-            new FilteringScenario().Run();
-            new GenericsScenario().Run();
-            new InterceptionScenario().Run();
+            new GenericsDemo().Run();
+
+            new FilteringDemo().Run();
+            
+            new InterceptionDemo().Run();
         }
     }
 }

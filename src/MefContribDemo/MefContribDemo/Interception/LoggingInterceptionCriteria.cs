@@ -6,9 +6,9 @@ using MefContrib.Hosting.Interception.Configuration;
 
 namespace MefContribDemo.Interception
 {
-    public class LogInterceptionCriteria : IPartInterceptionCriteria
+    public class LoggingInterceptionCriteria : IPartInterceptionCriteria
     {
-        public LogInterceptionCriteria(IExportedValueInterceptor interceptor)
+        public LoggingInterceptionCriteria(IExportedValueInterceptor interceptor)
         {
             Interceptor = interceptor;
         }

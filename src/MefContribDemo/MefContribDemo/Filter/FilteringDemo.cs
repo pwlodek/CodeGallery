@@ -9,13 +9,13 @@ using MefContrib.Hosting.Interception.Configuration;
 namespace MefContribDemo.Filter
 {
     /// <summary>
-    /// Typical web scenario.
+    /// Sample web scenario.
     /// </summary>
-    public class FilteringScenario
+    public class FilteringDemo
     {
         public void Run()
         {
-            Console.WriteLine("*** Filtering Scenario ***");
+            Console.WriteLine("\n*** Filtering Demo ***");
 
             // Simulate the web app life cycle
             using (var webApp = new WebApplication())
@@ -31,7 +31,22 @@ namespace MefContribDemo.Filter
                 using (var request = new AnotherRequest(webApp.Catalog, webApp.Container))
                 {
                     request.RequestContainer.GetExportedValue<ISharedPart>();
-                    request.RequestContainer.GetExportedValue<IRequestSpecificPart>();
+                    request.RequestContainer.GetExportedValue<INonSharedPart>();
+                    request.RequestContainer.GetExportedValue<INonSharedPart>();
+                }
+
+                // Third request
+                using (var request = new YetAnotherRequest(webApp.Catalog, webApp.Container))
+                {
+                    request.RequestContainer.GetExportedValue<ISharedPartPerRequest>();
+                    request.RequestContainer.GetExportedValue<ISharedPartPerRequest>();
+                }
+
+                // Fourth request
+                using (var request = new YetAnotherRequest(webApp.Catalog, webApp.Container))
+                {
+                    request.RequestContainer.GetExportedValue<ISharedPartPerRequest>();
+                    request.RequestContainer.GetExportedValue<ISharedPartPerRequest>();
                 }
             }
         }
@@ -85,16 +100,10 @@ namespace MefContribDemo.Filter
 
             // Create filtering catalog with creation policy filter
             var filteringCatalog = new FilteringCatalog(
-                parentCatalog, new PartCreationPolicyFilter(CreationPolicy.NonShared));
-
-            // Add request specific parts which are available to this request only
-            var typeCatalog = new TypeCatalog(typeof(RequestSpecificPart));
-
-            // Aggreagte previous two catalogs
-            var aggregateCatalog = new AggregateCatalog(filteringCatalog, typeCatalog);
-
+                parentCatalog, new HasCreationPolicy(CreationPolicy.NonShared));
+            
             // Create the child container
-            this.requestContainer = new CompositionContainer(aggregateCatalog, parentContainer);
+            this.requestContainer = new CompositionContainer(filteringCatalog, parentContainer);
         }
 
         public CompositionContainer RequestContainer
@@ -112,6 +121,44 @@ namespace MefContribDemo.Filter
 
     #endregion
 
+    #region YetAnotherRequest
+
+    public class YetAnotherRequest : IDisposable
+    {
+        private readonly CompositionContainer requestContainer;
+
+        public YetAnotherRequest(ComposablePartCatalog parentCatalog, CompositionContainer parentContainer)
+        {
+            Console.WriteLine("/* YetAnotherRequest */");
+
+            // Create filtering catalog with "PER-REQUEST" creation policy filter
+            var filteringCatalog = new FilteringCatalog(
+                parentCatalog,
+                p => p.Metadata.ContainsKey(CompositionConstants.PartCreationPolicyMetadataName) &&
+                     p.Metadata[CompositionConstants.PartCreationPolicyMetadataName].Equals(CreationPolicy.Shared) &&
+                     p.Metadata.ContainsKey("PerRequest") &&
+                     p.Metadata["PerRequest"].Equals(true)
+                );
+
+            // Create the child container
+            this.requestContainer = new CompositionContainer(filteringCatalog, parentContainer);
+        }
+
+        public CompositionContainer RequestContainer
+        {
+            get { return requestContainer; }
+        }
+
+        public void Dispose()
+        {
+            this.RequestContainer.Dispose();
+
+            Console.WriteLine("/* YetAnotherRequest End */");
+        }
+    }
+
+    #endregion
+
     #region WebApplication
 
     public class WebApplication : IDisposable
@@ -122,7 +169,7 @@ namespace MefContribDemo.Filter
         public WebApplication()
         {
             // Create source catalog with parts available to any request
-            this.catalog = new TypeCatalog(typeof(SharedPart), typeof(NonSharedPart));
+            this.catalog = new TypeCatalog(typeof(SharedPart), typeof(NonSharedPart), typeof(SharedPartPerRequest));
 
             // Create the container whose lifetime is bound to the "web app"
             this.container = new CompositionContainer(this.catalog);

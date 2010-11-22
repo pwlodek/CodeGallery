@@ -11,14 +11,13 @@ namespace MefContribDemo.Generics
     /// Shows how to use open-generics support. <see cref="CreateContainer1"/>
     /// and <see cref="CreateContainer2"/> mothods are equivalents.
     /// </summary>
-    public class GenericsScenario
+    public class GenericsDemo
     {
-        [Import]
-        public Trampoline Test { get; set; }
-
         private static CompositionContainer CreateContainer1()
         {
-            // Create source catalog
+            // Create source catalog, note we are passing the registry part.
+            // During the runtime, GenericExportHandler will query this catalog for
+            // all types implementing IGenericContractRegistry
             var typeCatalog = new TypeCatalog(typeof(Trampoline), typeof(MyGenericContractRegistry));
 
             // Create the interception configuration and add support for open generics
@@ -49,15 +48,28 @@ namespace MefContribDemo.Generics
 
         public void Run()
         {
-            Console.WriteLine("\n*** Generics Scenario ***");
+            Console.WriteLine("*** Generics Demo ***");
 
             // Create the container
             var container = CreateContainer2();
 
-            container.SatisfyImportsOnce(this);
+            // Get the trampoline object
+            var trampoline = container.GetExportedValue<Trampoline>();
 
             // Test the open generics support
-            Test.Repository.Save(new Customer());
+            trampoline.Repository.Save(new Customer());
+
+            try
+            {
+                // This results in exception being thrown. The user cannot directly query for
+                // open-generics type because underneath MEF creates ContractBasedImportDefinition
+                // from which it is not possible to determin the open-generics type to for
+                // creating closed generic part. This is why Trampoline class is used.
+                container.GetExportedValue<IRepository<Customer>>();
+            }
+            catch
+            {
+            }
         }
 
         [Export]

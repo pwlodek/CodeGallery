@@ -49,15 +49,15 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filter\FilteringScenario.cs" />
+    <Compile Include="Filter\FilteringDemo.cs" />
     <Compile Include="Filter\PartCreationPolicyFilter.cs" />
     <Compile Include="Filter\Parts.cs" />
-    <Compile Include="Generics\GenericsScenario.cs" />
+    <Compile Include="Generics\GenericsDemo.cs" />
     <Compile Include="Generics\Parts.cs" />
-    <Compile Include="Interception\InterceptionScenario.cs" />
+    <Compile Include="Interception\InterceptionDemo.cs" />
     <Compile Include="Interception\IStartable.cs" />
     <Compile Include="Interception\LoggingInterceptor.cs" />
-    <Compile Include="Interception\LogInterceptionCriteria.cs" />
+    <Compile Include="Interception\LoggingInterceptionCriteria.cs" />
     <Compile Include="Interception\Parts.cs" />
     <Compile Include="Interception\StartableStrategy.cs" />
     <Compile Include="Program.cs" />
