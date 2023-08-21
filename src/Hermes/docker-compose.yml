@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  hermes.consolehost:
+    image: ${DOCKER_REGISTRY}hermesconsolehost
+    build:
+      context: .
+      dockerfile: Hermes.ConsoleHost/Dockerfile

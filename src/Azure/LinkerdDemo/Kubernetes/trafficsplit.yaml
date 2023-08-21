@@ -1,0 +1,14 @@
+apiVersion: split.smi-spec.io/v1alpha1
+kind: TrafficSplit
+metadata:
+  name: backend-svc-split
+  namespace: linkerd-demo
+spec:
+  # The root service that clients use to connect to the destination application.
+  service: backend-svc
+  # Services inside the namespace with their own selectors, endpoints and configuration.
+  backends:
+  - service: servicea-svc
+    weight: 1m
+  - service: serviceb-svc
+    weight: 2m

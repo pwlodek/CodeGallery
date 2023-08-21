@@ -1,0 +1,57 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: gateway-ingress
+  namespace: linkerd-demo
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /api/$1
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header l5d-dst-override $service_name.$namespace.svc.cluster.local:$service_port;
+spec:
+  rules:
+  - host: localhost
+    http:
+      paths:
+        - path: /api/v1/(.+)
+          backend:
+            serviceName: gateway-svc
+            servicePort: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: servicea-ingress
+  namespace: linkerd-demo
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header l5d-dst-override $service_name.$namespace.svc.cluster.local:$service_port;
+spec:
+  rules:
+  - host: localhost
+    http:
+      paths:
+        - path: /service-a(/|$)(.*)
+          backend:
+            serviceName: servicea-svc
+            servicePort: 80
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: serviceb-ingress
+  namespace: linkerd-demo
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_set_header l5d-dst-override $service_name.$namespace.svc.cluster.local:$service_port;
+spec:
+  rules:
+  - host: localhost
+    http:
+      paths:
+        - path: /service-b(/|$)(.*)
+          backend:
+            serviceName: serviceb-svc
+            servicePort: 80
+---           

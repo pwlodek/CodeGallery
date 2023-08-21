@@ -1,0 +1,175 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: linkerd-demo
+  annotations:
+    linkerd.io/inject: enabled
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: demoaccount
+  namespace: linkerd-demo
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bot
+  namespace: linkerd-demo
+spec:
+  selector:
+    matchLabels:
+      app: bot
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: bot
+    spec:
+      serviceAccountName: demoaccount
+      containers:
+      - name: bot
+        image: bot
+        imagePullPolicy: IfNotPresent        
+        ports:
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: gateway-svc
+  namespace: linkerd-demo
+  labels:
+    app: gateway
+spec:
+  type: ClusterIP
+  selector:
+    app: gateway
+  ports:
+  - name: gateway
+    protocol: TCP
+    port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway
+  namespace: linkerd-demo
+spec:
+  selector:
+    matchLabels:
+      app: gateway
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      serviceAccountName: demoaccount
+      containers:
+      - name: gateway
+        image: gateway
+        imagePullPolicy: IfNotPresent        
+        ports:
+        - containerPort: 80
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: servicea-svc
+  namespace: linkerd-demo
+  labels:
+    app: servicea
+spec:
+  type: ClusterIP
+  selector:
+    app: servicea
+  ports:
+  - name: servicea
+    protocol: TCP
+    port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: servicea
+  namespace: linkerd-demo
+spec:
+  selector:
+    matchLabels:
+      app: servicea
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: servicea
+    spec:
+      serviceAccountName: demoaccount
+      containers:
+      - name: servicea
+        image: servicea
+        imagePullPolicy: IfNotPresent        
+        ports:
+        - containerPort: 80
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: serviceb-svc
+  namespace: linkerd-demo
+  labels:
+    app: serviceb
+spec:
+  type: ClusterIP
+  selector:
+    app: serviceb
+  ports:
+  - name: serviceb
+    protocol: TCP
+    port: 80
+    targetPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: serviceb
+  namespace: linkerd-demo
+spec:
+  selector:
+    matchLabels:
+      app: serviceb
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: serviceb
+    spec:
+      serviceAccountName: demoaccount
+      containers:
+      - name: serviceb
+        image: serviceb
+        imagePullPolicy: IfNotPresent        
+        ports:
+        - containerPort: 80
+---
+
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend-svc
+  namespace: linkerd-demo
+  labels:
+    app: servicea
+spec:
+  type: ClusterIP
+  selector:
+    app: servicea
+  ports:
+  - name: backend
+    protocol: TCP
+    port: 80
+    targetPort: 80
+---
