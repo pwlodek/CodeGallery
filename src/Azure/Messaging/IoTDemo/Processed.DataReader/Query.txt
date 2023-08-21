@@ -1,0 +1,11 @@
+﻿SELECT
+    System.Timestamp AS OutputTime,
+    sensor as SensorName,
+    Avg(temperature) AS AvgTemp
+INTO
+    out
+FROM
+    mainevents TIMESTAMP BY time
+--WHERE level='critical'
+GROUP BY TumblingWindow(second, 10), sensor
+HAVING Avg(temperature)>25

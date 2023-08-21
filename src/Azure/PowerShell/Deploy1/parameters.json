@@ -1,0 +1,96 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "publicIPAddresses_MyAppIPAddressGA_domainNameLabel": {
+            "value": null
+        },
+        "loadBalancers_MyAppLB_name": {
+            "value": null
+        },
+        "virtualMachines_Web_VM1_name": {
+            "value": null
+        },
+        "virtualMachines_Web_VM2_name": {
+            "value": null
+        },
+        "virtualNetworks_MyAppVN_name": {
+            "value": null
+        },
+        "availabilitySets_MyAppAS_name": {
+            "value": null
+        },
+        "publicIPAddresses_MyAppIP_name": {
+            "value": null
+        },
+        "applicationGateways_MyAppAG_name": {
+            "value": null
+        },
+        "networkInterfaces_web_vm214_name": {
+            "value": null
+        },
+        "networkInterfaces_web_vm1716_name": {
+            "value": null
+        },
+        "networkSecurityGroups_MyAppNSG_name": {
+            "value": null
+        },
+        "publicIPAddresses_MyAppIPAddressGA_name": {
+            "value": null
+        },
+        "subnets_Web_name": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_web_vm1_name": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_web_vm2_name": {
+            "value": null
+        },
+        "subnets_GatewaySubney_name": {
+            "value": null
+        },
+        "securityRules_Port_80_name": {
+            "value": null
+        },
+        "securityRules_Port_3389_name": {
+            "value": null
+        },
+        "disks_Web_VM1_OsDisk_1_af3f9f2740104a4587396a408b229224_name": {
+            "value": null
+        },
+        "disks_Web_VM2_OsDisk_1_707f40832d594237b6c431abcb53339e_name": {
+            "value": null
+        },
+        "applicationGateways_MyAppAG_id": {
+            "value": null
+        },
+        "applicationGateways_MyAppAG_id_1": {
+            "value": null
+        },
+        "applicationGateways_MyAppAG_id_2": {
+            "value": null
+        },
+        "applicationGateways_MyAppAG_id_3": {
+            "value": null
+        },
+        "applicationGateways_MyAppAG_id_4": {
+            "value": null
+        },
+        "loadBalancers_MyAppLB_id": {
+            "value": null
+        },
+        "loadBalancers_MyAppLB_id_1": {
+            "value": null
+        },
+        "loadBalancers_MyAppLB_id_2": {
+            "value": null
+        },
+        "loadBalancers_MyAppLB_id_3": {
+            "value": null
+        },
+        "loadBalancers_MyAppLB_id_4": {
+            "value": null
+        }
+    }
+}

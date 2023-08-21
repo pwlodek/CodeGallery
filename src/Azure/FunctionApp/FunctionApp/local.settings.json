@@ -1,0 +1,7 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=piotrteststorage;AccountKey=d41ViogFS1ln5KQrIbxEUfhosT1U9HdF1QKUI7p2tslG/bA2YDtO+cl61LdnkV181usx4V2y9SriAB11f8idMw==;EndpointSuffix=core.windows.net",
+    "AzureWebJobsDashboard": "DefaultEndpointsProtocol=https;AccountName=piotrteststorage;AccountKey=d41ViogFS1ln5KQrIbxEUfhosT1U9HdF1QKUI7p2tslG/bA2YDtO+cl61LdnkV181usx4V2y9SriAB11f8idMw==;EndpointSuffix=core.windows.net"
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=teststoragepiotr;AccountKey=qAgKBmZoy9hbrlCTZ3+i3IeW+fvaCGpYVeWgin5pH95k3hfiQO18Jr0r6KzWmAreo5yd96EEu8NIqmrSNSXW2g==;EndpointSuffix=core.windows.net",
+    "AzureWebJobsDashboard": "DefaultEndpointsProtocol=https;AccountName=teststoragepiotr;AccountKey=qAgKBmZoy9hbrlCTZ3+i3IeW+fvaCGpYVeWgin5pH95k3hfiQO18Jr0r6KzWmAreo5yd96EEu8NIqmrSNSXW2g==;EndpointSuffix=core.windows.net",
+    "AzureWebJobsServiceBus": "Endpoint=sb://testservicebuspiotr.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=vgO2vkNXfcwz1/3wI2zIR96Qz2eOKU77GP1k7rI3uFI="
+  }
+}

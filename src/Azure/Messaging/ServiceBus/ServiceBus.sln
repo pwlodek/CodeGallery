@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus.Producer", "ServiceBus.Producer\ServiceBus.Producer.csproj", "{B2C1F622-E1AB-4CFF-AA97-6D6941C27870}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceBus.Consumer", "ServiceBus.Consumer\ServiceBus.Consumer.csproj", "{95517C2C-95AE-4C33-B0E0-9670F986EBC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CosmosDB-Test", "\\Mac\Home\Infusion\AzureHacking\CosmosDB\CosmosDB-Test\CosmosDB-Test.csproj", "{37DCBC72-DCCF-4DB0-8CDB-48702D3C1AB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B2C1F622-E1AB-4CFF-AA97-6D6941C27870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2C1F622-E1AB-4CFF-AA97-6D6941C27870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2C1F622-E1AB-4CFF-AA97-6D6941C27870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2C1F622-E1AB-4CFF-AA97-6D6941C27870}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95517C2C-95AE-4C33-B0E0-9670F986EBC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95517C2C-95AE-4C33-B0E0-9670F986EBC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95517C2C-95AE-4C33-B0E0-9670F986EBC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95517C2C-95AE-4C33-B0E0-9670F986EBC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37DCBC72-DCCF-4DB0-8CDB-48702D3C1AB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37DCBC72-DCCF-4DB0-8CDB-48702D3C1AB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37DCBC72-DCCF-4DB0-8CDB-48702D3C1AB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37DCBC72-DCCF-4DB0-8CDB-48702D3C1AB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
